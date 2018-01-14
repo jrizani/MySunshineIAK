@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView mainWeatherTemp;
     private RecyclerView mainWeatherList;
 
+    private WeatherAdapter weatherAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,10 +37,13 @@ public class MainActivity extends AppCompatActivity {
         mainWeatherList.setLayoutManager(new LinearLayoutManager(this));
         mainWeatherList.setHasFixedSize(true);
 
-        mainToday.setText("Minggu");
+        mainToday.setText(R.string.hari_minggu);
         mainWeatherImage.setImageResource(R.mipmap.ic_launcher_round);
-        mainWeatherDesc.setText("Cuaca Berawan");
+        mainWeatherDesc.setText(R.string.cuaca_berawan);
         mainWeatherTemp.setText("100" + getString(R.string.degree));
+
+        weatherAdapter = new WeatherAdapter();
+        mainWeatherList.setAdapter(weatherAdapter);
     }
 
     @Override
